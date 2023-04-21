@@ -1,16 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.0"
-    }
-  }
-}
-
-provider "aws" {
-  region  = "eu-west-2"
-}
-
 module "config_conformance_pack" {
   source  = "cloudposse/config/aws//modules/conformance-pack"
   version = "0.17.0"
