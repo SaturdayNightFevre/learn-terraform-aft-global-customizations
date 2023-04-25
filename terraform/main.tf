@@ -28,3 +28,15 @@ module "config" {
   central_resource_collector_account = "605188504569"
   #tags                             = merge(local.common_tags.locals.default_tags, local.env_tags)
 }
+
+
+module "config_storage" {
+  source  = "cloudposse/config-storage/aws"
+  version = "0.8.1"
+
+  name                     = "${data.aws_caller_identity.current.account_id}-aws-config-testing"
+  force_destroy            = true
+  enabled                  = true
+  standard_transition_days = 30
+  #tags                     = merge(local.common_tags.locals.default_tags, local.env_tags)
+} 
