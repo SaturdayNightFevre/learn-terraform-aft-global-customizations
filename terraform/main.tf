@@ -1,3 +1,5 @@
+data "aws_caller_identity" "current" {}
+
 module "config_conformance_pack" {
   source  = "cloudposse/config/aws//modules/conformance-pack"
   version = "0.17.0"
@@ -32,7 +34,7 @@ module "config_storage" {
   source  = "cloudposse/config-storage/aws"
   version = "0.8.1"
 
-  name                     = "account-id-aws-config-testing"
+  name                     = "${data.aws_caller_identity.current.account_id}-aws-config-testing"
   force_destroy            = true
   enabled                  = true
   standard_transition_days = 30
